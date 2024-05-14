@@ -1,0 +1,679 @@
+
+
+<html>
+
+<script>
+
+var mainCourseObject = {
+
+  "Mutton Briyani": {
+
+    
+
+  },
+
+  "Chicken Briyani": {
+
+    "HTML": ["Links", "Images", "Tables", "Lists"],
+
+    "CSS": ["Borders", "Margins", "Backgrounds", "Float"],
+
+    "JavaScript": ["Variables", "Operators", "Functions", "Conditions"]
+
+  }
+
+  
+
+}
+
+
+
+var subjectObject = {
+
+  "Front-end": {
+
+    "HTML": ["Links", "Images", "Tables", "Lists"],
+
+    "CSS": ["Borders", "Margins", "Backgrounds", "Float"],
+
+    "JavaScript": ["Variables", "Operators", "Functions", "Conditions"]
+
+  },
+
+  "Back-end": {
+
+    "PHP": ["Variables", "Strings", "Arrays"],
+
+    "SQL": ["SELECT", "UPDATE", "DELETE"]
+
+  }
+
+  
+
+}
+
+window.onload = function() {
+
+  var mainCourseEle = document.getElementById("maincourse");
+
+  var subjectSel = document.getElementById("subject");
+
+  var topicSel = document.getElementById("topic");
+
+  var chapterSel = document.getElementById("chapter");
+
+var vunitPrice_m2 = document.getElementById("unitPrice_m2");
+
+
+
+
+
+ for (var x in mainCourseObject) {
+
+    mainCourseEle.options[mainCourseEle.options.length] = new Option(x, x);
+
+  }
+
+  
+
+ for (var x in subjectObject) {
+
+    subjectSel.options[subjectSel.options.length] = new Option(x, x);
+
+  }
+
+  subjectSel.onchange = function() {
+
+    //empty Chapters- and Topics- dropdowns
+
+    chapterSel.length = 1;
+
+    topicSel.length = 1;
+
+    //display correct values
+
+    for (var y in subjectObject[this.value]) {
+
+      topicSel.options[topicSel.options.length] = new Option(y, y);
+
+    }
+
+  }
+
+  topicSel.onchange = function() {
+
+    //empty Chapters dropdown
+
+    chapterSel.length = 1;
+
+    //display correct values
+
+    var z = subjectObject[subjectSel.value][this.value];
+
+    for (var i = 0; i < z.length; i++) {
+
+      chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+
+    }
+
+  }
+
+}
+
+
+
+function isNumber(evt) {
+
+    evt = (evt) ? evt : window.event;
+
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+
+
+function getPrice(ele){
+
+var eleStr = ele.id.toString();
+
+var j = eleStr.slice(-3);
+
+var dish = ele.value;
+
+if(dish=="Select dish"){
+
+	unitP=0;
+
+}else if(dish=="mb"){
+
+	unitP=250;
+
+}else if(dish=="cb"){
+
+	unitP=200;
+
+}else if(dish=="vb"){
+
+	unitP=150;
+
+}else if(dish=="ct"){
+
+	unitP=400;
+
+}else if(dish=="c6"){
+
+	unitP=420;
+
+}else if(dish=="cl"){
+
+	unitP=500;
+
+}
+
+var vUnitPrice = document.getElementById("unitPrice_" + j);
+
+vUnitPrice.innerHTML = unitP
+
+
+
+var vReqQuantity = document.getElementById("quantity_" + j).value;
+
+
+
+var vTotalPrice = unitP * vReqQuantity;
+
+
+
+var vTotPrice = document.getElementById("totPrice_"+j);
+
+vTotPrice.innerHTML=vTotalPrice;
+
+
+
+var vTotPriceAll=0;
+
+let elements = document.getElementsByClassName("totPrice");
+
+Array.from(elements).forEach(function (element) {
+
+if(element.innerHTML!="?"){
+
+vTotPriceAll=vTotPriceAll+parseInt(element.innerHTML);
+
+};
+
+  
+
+});
+
+
+
+var vTotAmount = document.getElementById("totalAmount");
+
+vTotAmount.innerHTML = vTotPriceAll;
+
+
+
+}
+
+
+
+</script>
+
+<style>
+
+.hero-image {
+
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://i.imgur.com/ziHuYse.png");
+
+
+
+  /* Set a specific height */
+
+  height: 50%;
+
+  width:50%
+
+  /* Position and center the image to scale nicely on all screens */
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  background-size: cover;
+
+  position: relative;
+
+  margin: 50px;
+
+}
+
+
+
+.styled-table {
+
+    border-collapse: collapse;
+
+    margin: 25px 0;
+
+    font-size: 0.9em;
+
+    font-family: sans-serif;
+
+    min-width: 400px;
+
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+	margin: 0px auto;
+
+}
+
+
+
+.styled-table thead tr {
+
+    background-color: #009879;
+
+    color: #ffffff;
+
+    text-align: left;
+
+}
+
+.content-table td {
+
+    text-align: center;
+
+}
+
+.styled-table th,
+
+.styled-table td {
+
+    padding: 12px 15px;
+
+	text-align:center;
+
+}
+
+
+
+.styled-table tbody tr {
+
+    border-bottom: 1px solid #dddddd;
+
+	text-align:center;
+
+}
+
+
+
+.styled-table tbody tr:nth-of-type(even) {
+
+    background-color: #f3f3f3;
+
+}
+
+
+
+.styled-table tbody tr:total-of-type {
+
+	border-top: 2px solid #009879;
+
+    border-bottom: 2px solid #009879;
+
+}
+
+
+
+.styled-table tbody tr:last-of-type {
+
+    border-bottom: 2px solid #009879;
+
+}
+
+
+
+.styled-table tbody td.row-cellbold {
+
+    font-weight: bold;
+
+    color: #009879;
+
+}
+
+.styled-table tbody tr.active-row {
+
+    font-weight: bold;
+
+    color: #009879;
+
+}
+
+
+
+/* Dropdown Button */
+
+.dropbtn {
+
+  background-color: #3498DB;
+
+  color: white;
+
+  padding: 16px;
+
+  font-size: 16px;
+
+  border: none;
+
+  cursor: pointer;
+
+}
+
+
+
+/* Dropdown button on hover & focus */
+
+.dropbtn:hover, .dropbtn:focus {
+
+  background-color: #2980B9;
+
+}
+
+
+
+/* The container <div> - needed to position the dropdown content */
+
+.dropdown {
+
+  position: relative;
+
+  display: inline-block;
+
+}
+
+
+
+/* Dropdown Content (Hidden by Default) */
+
+.dropdown-content {
+
+  display: none;
+
+  position: absolute;
+
+  background-color: #f1f1f1;
+
+  min-width: 160px;
+
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+  z-index: 1;
+
+}
+
+
+
+/* Links inside the dropdown */
+
+.dropdown-content a {
+
+  color: black;
+
+  padding: 12px 16px;
+
+  text-decoration: none;
+
+  display: block;
+
+}
+
+
+
+/* Change color of dropdown links on hover */
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+
+.show {display:block;}
+
+</style>
+
+  <link rel="stylesheet" href="styles.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+
+
+
+<div class="hero-image">
+
+  <div class="hero-text">
+
+  </div>
+
+</div>
+
+
+
+<table class="styled-table">
+
+    <thead>
+
+        <tr>
+
+            <th>Name</th>
+
+            <th>Quantity</th>
+
+			<th>Price per Quantity</th>
+
+			<th>Total</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        <tr class="active-row">
+
+            <td>Main Course</td>
+
+            <td></td>
+
+        </tr>
+
+         <tr>
+
+            <td><select name="maincourse_1_1" id="maincourse_1_1" onchange="getPrice(this)">
+
+			<option>Select dish</option>
+
+			<option value="mb">Mutton Briyani</option>
+
+			<option value="cb">Chicken Briyani</option>
+
+			<option value="vb">Veg Briyani</option>		
+
+		</td>
+
+		<td><input type="text" id="quantity_1_1" name="fquantitym1" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
+
+		  <td class="row-cellbold" id="unitPrice_1_1">0</td>
+
+		  <td class="totPrice" id="totPrice_1_1">?</td>
+
+        </tr>
+
+        <tr>
+
+            <td><select name="maincourse_1_2" id="maincourse_1_2" onchange="getPrice(this)">
+
+			<option>Select dish</option>
+
+			<option value="mb">Mutton Briyani</option>
+
+			<option value="cb">Chicken Briyani</option>
+
+			<option value="vb">Veg Briyani</option>		
+
+		</td>
+
+		<td><input type="text" id="quantity_1_2" name="fquantitym2" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
+
+		  <td class="row-cellbold" id="unitPrice_1_2">0</td>
+
+		  <td class="totPrice" id="totPrice_1_2">?</td>
+
+        </tr>
+
+		
+
+        <tr>
+
+            <td><select name="maincourse_1_3" id="maincourse_1_3" " id="maincourse2" onchange="getPrice(this)">
+
+			<option>Select dish</option>
+
+			<option value="mb">Mutton Briyani</option>
+
+			<option value="cb">Chicken Briyani</option>
+
+			<option value="vb">Veg Briyani</option>		
+
+		</td>
+
+		<td><input type="text" id="quantity_1_3" name="fquantitym3" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
+
+		  <td class="row-cellbold"  id="unitPrice_1_3">0</td>
+
+		  <td class="totPrice" id="totPrice_1_3">?</td>
+
+        </tr>	
+
+
+
+<!---Starters--->
+
+
+
+        <tr class="active-row">
+
+            <td>Starters</td>
+
+            <td></td>
+
+        </tr>
+
+        <tr>
+
+            <td><select name="starters_2_1" id="starters_2_1" onchange="getPrice(this)">
+
+			<option>Select dish</option>
+
+			<option value="ct">Chicken Tandoori</option>
+
+			<option value="c6">Chicken 65</option>
+
+			<option value="cl">Chicken Lollipop</option>		
+
+		</td>
+
+		<td><input type="text" id="quantity_2_1" name="quantity_2_1" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
+
+		  <td class="row-cellbold" id="unitPrice_2_1">0</td>
+
+		  <td class="totPrice" id="totPrice_2_1">?</td>
+
+        </tr>
+
+        <tr>
+
+            <td><select name="starters_2_2" id="starters_2_2" onchange="getPrice(this)">
+
+			<option>Select dish</option>
+
+			<option value="ct">Chicken Tandoori</option>
+
+			<option value="c6">Chicken 65</option>
+
+			<option value="cl">Chicken Lollipop</option>		
+
+		</td>
+
+		<td><input type="text" id="quantity_2_2" name="quantity_2_2" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
+
+		  <td class="row-cellbold" id="unitPrice_2_2">0</td>
+
+		  <td class="totPrice" id="totPrice_2_2">?</td>
+
+        </tr>
+
+		
+
+        <tr>
+
+            <td><select name="starters_2_3" id="starters_2_3" onchange="getPrice(this)">
+
+			<option>Select dish</option>
+
+			<option value="ct">Chicken Tandoori</option>
+
+			<option value="c6">Chicken 65</option>
+
+			<option value="cl">Chicken Lollipop</option>		
+
+			</td>
+
+		<td><input type="text" id="quantity_2_3" name="quantity_2_3" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
+
+		  <td class="row-cellbold"  id="unitPrice_2_3">0</td>
+
+		  <td class="totPrice" id="totPrice_2_3">?</td>
+
+        </tr>	
+
+		<tr>
+
+		<td class="row-cellbold" colspan="3">Total Amount</td>
+
+		<td class="row-cellbold" id="totalAmount">0</td>
+
+		</tr>
+
+		
+
+        <!-- and so on... -->
+
+    </tbody>
+
+</table>
+
+
+
+<br>
+
+
+
+
+
+</div>
+
+</body>
+
+  </html>
