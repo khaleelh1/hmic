@@ -259,22 +259,23 @@ vTotAmount.innerHTML = vTotPriceAll;
 }
 
 
-
 .styled-table {
-
+	overflow-x: auto;
+        display: block;
     border-collapse: collapse;
-
-    margin: 25px 0;
+	
+    margin: 125px 0;
 
     font-size: 0.9em;
 
     font-family: sans-serif;
 
-    min-width: 400px;
+    min-width: 800px;
 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
 	margin: 0px auto;
+	layout:fixed;
 
 }
 
@@ -292,14 +293,16 @@ vTotAmount.innerHTML = vTotPriceAll;
 
 .content-table td {
 
-    text-align: center;
+	word-wrap: break-word;
+    text-align: left;
+	
 
 }
 
 .styled-table th,
 
 .styled-table td {
-
+	width:800px;
     padding: 12px 15px;
 
 	text-align:center;
