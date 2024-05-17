@@ -247,21 +247,37 @@ function showMenu() {
 
 function sendOrder() {
   const num = "+918310870852";//document.getElementById("number").value;
-  var msg = "CD";//document.getElementById("msg").value;
+  var msg = "";//document.getElementById("msg").value;
   const name = "EF"; //document.getElementById("name").value;
 
 
 let elements = document.getElementsByClassName("totPrice");
-
+let dishes = document.getElementsByClassName("dishName");
+let quantities = document.getElementsByClassName("quantity");
+let unitPrices = document.getElementsByClassName("unitPrice");
+let totalPrices = document.getElementsByClassName("totPrice");
+var i =0;
 Array.from(elements).forEach(function (element) {
 	if(element.innerHTML!="?"){
-		msg=msg+parseInt(element.innerHTML);
+		
+		
+		var dish = dishes[i].options[dishes[i].selectedIndex].text;
+		var qty = quantities[i].value;
+		var unitPri = unitPrices[i].innerHTML;
+		var totPri = totalPrices[i].innerHTML;
+		//alert(dish + "  " + qty + "  " + unitPri + "  " + totPri);
+		msg=msg+"\n"+dish + "  " + qty + "  " + unitPri + "  " + totPri;
 	};
+	i++;
 });
 
-alert(num);
+if(msg==""){
+	alert("Enter Quantity for atleast one dish")
+}else{
+	const win = window.open(`https://wa.me/${num}?text=Order%20Enquiry%20${msg}%20test%20${name}`, '_blank');
+}
 
-  const win = window.open(`https://wa.me/${num}?text=Order%20Enquiry%20${msg}%20test%20${name}`, '_blank');
+  
   // win.focus();
 }
 
@@ -596,7 +612,7 @@ alert(num);
 
          <tr>
 
-            <td><select style="font-size:25px;" name="maincourse_1_1" id="maincourse_1_1" onchange="getPrice(this)">
+            <td><select  class="dishName" style="font-size:25px;" name="maincourse_1_1" id="maincourse_1_1" onchange="getPrice(this)">
 
 			<option>Select dish</option>
 
@@ -608,9 +624,9 @@ alert(num);
 
 		</td>
 
-		<td><input  style="font-size:25px;"  type="text" id="quantity_1_1" name="fquantitym1" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
+		<td><input  class="quantity" style="font-size:25px;"  type="text" id="quantity_1_1" name="fquantitym1" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
 
-		  <td class="row-cellbold" id="unitPrice_1_1">0</td>
+		  <td class="unitPrice" id="unitPrice_1_1">0</td>
 
 		  <td class="totPrice" id="totPrice_1_1">?</td>
 
@@ -618,7 +634,7 @@ alert(num);
 
         <tr>
 
-            <td><select style="font-size:25px;" name="maincourse_1_2" id="maincourse_1_2" onchange="getPrice(this)">
+            <td><select class="dishName" style="font-size:25px;" name="maincourse_1_2" id="maincourse_1_2" onchange="getPrice(this)">
 
 			<option>Select dish</option>
 
@@ -630,9 +646,9 @@ alert(num);
 
 		</td>
 
-		<td><input  style="font-size:25px;"  type="text" id="quantity_1_2" name="fquantitym2" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
+		<td><input  class="quantity" style="font-size:25px;"  type="text" id="quantity_1_2" name="fquantitym2" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
 
-		  <td class="row-cellbold" id="unitPrice_1_2">0</td>
+		  <td class="unitPrice" id="unitPrice_1_2">0</td>
 
 		  <td class="totPrice" id="totPrice_1_2">?</td>
 
@@ -642,7 +658,7 @@ alert(num);
 
         <tr>
 
-            <td><select style="font-size:25px;" name="maincourse_1_3" id="maincourse_1_3" " id="maincourse2" onchange="getPrice(this)">
+            <td><select class="dishName" style="font-size:25px;" name="maincourse_1_3" id="maincourse_1_3" " id="maincourse2" onchange="getPrice(this)">
 
 			<option>Select dish</option>
 
@@ -654,9 +670,9 @@ alert(num);
 
 		</td>
 
-		<td><input  style="font-size:25px;"  type="text" id="quantity_1_3" name="fquantitym3" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
+		<td><input  class="quantity" style="font-size:25px;"  type="text" id="quantity_1_3" name="fquantitym3" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
 
-		  <td class="row-cellbold"  id="unitPrice_1_3">0</td>
+		  <td class="unitPrice"  id="unitPrice_1_3">0</td>
 
 		  <td class="totPrice" id="totPrice_1_3">?</td>
 
@@ -678,7 +694,7 @@ alert(num);
 
         <tr>
 
-            <td><select style="font-size:25px;" name="starters_2_1" id="starters_2_1" onchange="getPrice(this)">
+            <td><select class="dishName" style="font-size:25px;" name="starters_2_1" id="starters_2_1" onchange="getPrice(this)">
 
 			<option>Select dish</option>
 
@@ -690,9 +706,9 @@ alert(num);
 
 		</td>
 
-		<td><input  style="font-size:25px;"  type="text" id="quantity_2_1" name="quantity_2_1" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
+		<td><input class="quantity" style="font-size:25px;"  type="text" id="quantity_2_1" name="quantity_2_1" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
 
-		  <td class="row-cellbold" id="unitPrice_2_1">0</td>
+		  <td class="unitPrice" id="unitPrice_2_1">0</td>
 
 		  <td class="totPrice" id="totPrice_2_1">?</td>
 
@@ -700,7 +716,7 @@ alert(num);
 
         <tr>
 
-            <td><select style="font-size:25px;" name="starters_2_2" id="starters_2_2" onchange="getPrice(this)">
+            <td><select class="dishName" style="font-size:25px;" name="starters_2_2" id="starters_2_2" onchange="getPrice(this)">
 
 			<option>Select dish</option>
 
@@ -712,9 +728,9 @@ alert(num);
 
 		</td>
 
-		<td><input  style="font-size:25px;"  type="text" id="quantity_2_2" name="quantity_2_2" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
+		<td><input  class="quantity" style="font-size:25px;"  type="text" id="quantity_2_2" name="quantity_2_2" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
 
-		  <td class="row-cellbold" id="unitPrice_2_2">0</td>
+		  <td class="unitPrice" id="unitPrice_2_2">0</td>
 
 		  <td class="totPrice" id="totPrice_2_2">?</td>
 
@@ -724,7 +740,7 @@ alert(num);
 
         <tr>
 
-            <td><select style="font-size:25px;" name="starters_2_3" id="starters_2_3" onchange="getPrice(this)">
+            <td><select class="dishName" style="font-size:25px;" name="starters_2_3" id="starters_2_3" onchange="getPrice(this)">
 
 			<option>Select dish</option>
 
@@ -736,9 +752,9 @@ alert(num);
 
 			</td>
 
-		<td><input  style="font-size:25px;"  type="text" id="quantity_2_3" name="quantity_2_3" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
+		<td><input  class="quantity" style="font-size:25px;"  type="text" id="quantity_2_3" name="quantity_2_3" size="10" onchange="getPrice(this)"  onkeypress="return isNumber(event)"></td>
 
-		  <td class="row-cellbold"  id="unitPrice_2_3">0</td>
+		  <td class="unitPrice"  id="unitPrice_2_3">0</td>
 
 		  <td class="totPrice" id="totPrice_2_3">?</td>
 
