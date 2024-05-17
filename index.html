@@ -248,6 +248,15 @@ function showMenu() {
     //btn.style.display = 'none';
 }
 
+function sendOrder() {
+  const num = "9740008967";//document.getElementById("number").value;
+  const msg = "CD";//document.getElementById("msg").value;
+  const name = "EF"; //document.getElementById("name").value;
+
+  const win = window.open(`https://wa.me/${num}?text=I%27m%20api%20msg%20hello%20${name}%20friend%20${msg}`, '_blank');
+  // win.focus();
+}
+
 </script>
 
 <style>
@@ -745,7 +754,7 @@ function showMenu() {
 
 <br><br>
 <div align="center">
-<button id ="place-order" class="button-3" role="button" onclick="hideMenu()">Place Order</button>
+<button id ="place-order" class="button-3" role="button" onclick="sendOrder()">Place Order</button>
 
 <div>
 <button id ="place-order-back" class="button-3" role="button" onclick="showMenu()" style="display:none">Back</button>
