@@ -148,6 +148,7 @@ var j = eleStr.slice(-3);
 
 var dish = ele.value;
 
+
 if(dish=="Select dish"){
 
 	unitP=0;
@@ -178,10 +179,12 @@ if(dish=="Select dish"){
 
 }
 
+
+if(dish!="Select dish"){
 var vUnitPrice = document.getElementById("unitPrice_" + j);
 
 vUnitPrice.innerHTML = unitP
-
+}
 
 
 var vReqQuantity = document.getElementById("quantity_" + j).value;
@@ -204,7 +207,7 @@ let elements = document.getElementsByClassName("totPrice");
 
 Array.from(elements).forEach(function (element) {
 
-if(element.innerHTML!="?"){
+if(element.innerHTML!="0"){
 
 vTotPriceAll=vTotPriceAll+parseInt(element.innerHTML);
 
@@ -246,7 +249,7 @@ function showMenu() {
 }
 
 function sendOrder() {
-  const num = "+918310870852";//document.getElementById("number").value;
+  const num = "+919620800153";//document.getElementById("number").value;
   var msg = "";//document.getElementById("msg").value;
   const name = "EF"; //document.getElementById("name").value;
 
@@ -258,7 +261,7 @@ let unitPrices = document.getElementsByClassName("unitPrice");
 let totalPrices = document.getElementsByClassName("totPrice");
 var i =0;
 Array.from(elements).forEach(function (element) {
-	if(element.innerHTML!="?"){
+	if(element.innerHTML!="0"){
 		
 		
 		var dish = dishes[i].options[dishes[i].selectedIndex].text;
@@ -266,7 +269,7 @@ Array.from(elements).forEach(function (element) {
 		var unitPri = unitPrices[i].innerHTML;
 		var totPri = totalPrices[i].innerHTML;
 		//alert(dish + "  " + qty + "  " + unitPri + "  " + totPri);
-		msg=msg+"\n"+dish + "  " + qty + "  " + unitPri + "  " + totPri;
+		msg=msg+"%0a"+dish + "  " + qty + "  " + unitPri + "  " + totPri;
 	};
 	i++;
 });
@@ -628,7 +631,7 @@ if(msg==""){
 
 		  <td class="unitPrice" id="unitPrice_1_1">0</td>
 
-		  <td class="totPrice" id="totPrice_1_1">?</td>
+		  <td class="totPrice" id="totPrice_1_1">0</td>
 
         </tr>
 
@@ -650,7 +653,7 @@ if(msg==""){
 
 		  <td class="unitPrice" id="unitPrice_1_2">0</td>
 
-		  <td class="totPrice" id="totPrice_1_2">?</td>
+		  <td class="totPrice" id="totPrice_1_2">0</td>
 
         </tr>
 
@@ -674,7 +677,7 @@ if(msg==""){
 
 		  <td class="unitPrice"  id="unitPrice_1_3">0</td>
 
-		  <td class="totPrice" id="totPrice_1_3">?</td>
+		  <td class="totPrice" id="totPrice_1_3">0</td>
 
         </tr>	
 
@@ -710,7 +713,7 @@ if(msg==""){
 
 		  <td class="unitPrice" id="unitPrice_2_1">0</td>
 
-		  <td class="totPrice" id="totPrice_2_1">?</td>
+		  <td class="totPrice" id="totPrice_2_1">0</td>
 
         </tr>
 
@@ -732,7 +735,7 @@ if(msg==""){
 
 		  <td class="unitPrice" id="unitPrice_2_2">0</td>
 
-		  <td class="totPrice" id="totPrice_2_2">?</td>
+		  <td class="totPrice" id="totPrice_2_2">0</td>
 
         </tr>
 
@@ -756,7 +759,7 @@ if(msg==""){
 
 		  <td class="unitPrice"  id="unitPrice_2_3">0</td>
 
-		  <td class="totPrice" id="totPrice_2_3">?</td>
+		  <td class="totPrice" id="totPrice_2_3">0</td>
 
         </tr>	
 
